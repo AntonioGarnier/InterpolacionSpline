@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- JNLP File for SwingSet2 Demo Application -->
+<jnlp
+  spec="6.0+"
+  codebase="./"
+  href="spline.jnlp">
+  <information>
+    <title>Interpolación mediante Spline</title>
+    <vendor>Antonio Garnier</vendor>
+    <homepage href="https://github.com/AntonioGarnier/InterpolacionSpline"/>
+    <description>SPLINE</description>
+    <description kind="short">Aplicación en Java que implementa la Interpolación
+    mediante Splines
+    </description>
+    <icon href="https://image.freepik.com/free-icon/line-chart_318-49906.jpg"/>
+    <icon kind="splash" href="images/splash.gif"/>
+    <offline-allowed/>
+    <association mime-type="application-x/swingset2-file"  extensions="swingset2"/>
+    <shortcut online="false" install="false">
+      <desktop/>
+      <menu submenu="My Corporation Apps"/>
+    </shortcut>
+  </information>
+  <security>
+      <all-permissions/>
+  </security>
+  <resources>
+    <jar href="Spline2.jar"/>
+  </resources>
+  <applet-desc main-class="ControladorSpline" name="spline" width="800" height="600">
+  </applet-desc>
+</jnlp>
