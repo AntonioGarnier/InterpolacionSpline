@@ -1,5 +1,3 @@
-package spline;
-
 import java.util.Random;
 
 public class IntervaloNumeroAleatorio {
@@ -7,13 +5,13 @@ public class IntervaloNumeroAleatorio {
 	private Random aleatorio = new Random ();
 
 	public IntervaloNumeroAleatorio () {
-		
+
 	}
 
 	public int getNumeroAleatorio(int minimo, int maximo) {
 		return minimo + getAleatorio().nextInt(maximo + 1 - minimo);
 	}
-	
+
 	/**
 	 * @return the aleatorio
 	 */
@@ -27,5 +25,5 @@ public class IntervaloNumeroAleatorio {
 	public void setAleatorio(Random aleatorio) {
 		this.aleatorio = aleatorio;
 	}
-	
+
 }

@@ -1,14 +1,12 @@
-package spline;
-
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
 public class PanelControl extends JPanel{
-	
+
 	private static final long serialVersionUID = 1L;
 	private Botonera botones;	// Array list con los botones, ademas contiene atributos con etiquetas y campos de texto
-	
+
 	public PanelControl () {
 		setLayout(new GridLayout(0, 5));
 		initBotonera();
@@ -26,7 +24,7 @@ public class PanelControl extends JPanel{
 		add(getBotones().getCoordenadaXField());
 		add(getBotones().getCoordenadaYField());
 	}
-	
+
 	/**
 	 * @return the botones
 	 */
@@ -40,6 +38,6 @@ public class PanelControl extends JPanel{
 	public void setBotones(Botonera botones) {
 		this.botones = botones;
 	}
-	
-	
+
+
 }

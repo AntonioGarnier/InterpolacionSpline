@@ -1,5 +1,3 @@
-package spline;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -36,7 +34,7 @@ public class ControladorSpline extends JApplet {
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 	}
-	
+
 	/**
 	 * Constructor por defecto
 	 * @param vistaSpline Define la vista
@@ -73,7 +71,7 @@ public class ControladorSpline extends JApplet {
 	public void errorNodos () {
 		JOptionPane.showMessageDialog(getVistaSpline(), "Debes introducir un número entero mayor o igual a 2", "Número Incorrecto", JOptionPane.ERROR_MESSAGE);
 	}
-	
+
 	/**
 	 * Inicializa los listener de los botones
 	 */
@@ -81,7 +79,7 @@ public class ControladorSpline extends JApplet {
 
 		// Boton generar: genera una serie de puntos aleatorios y dibuja la SPLINE
 		getPanelControl().getBotones().getBoton(BotonEnum.GENERAR).addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				getModeloSpline().clearModelo();
@@ -99,10 +97,10 @@ public class ControladorSpline extends JApplet {
 				getVistaSpline().repaint();
 			}
 		});
-		
+
 		// Borra el panel donde se dibuja
 		getPanelControl().getBotones().getBoton(BotonEnum.REINICIAR).addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				getModeloSpline().clearModelo();
@@ -111,10 +109,10 @@ public class ControladorSpline extends JApplet {
 				getVistaSpline().repaint();
 			}
 		});
-		
+
 		// Muestra información sobre la práctica
 		getPanelControl().getBotones().getBoton(BotonEnum.INFORMACION).addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String mensaje = "Interpolación mediante Spline\n";
@@ -129,10 +127,10 @@ public class ControladorSpline extends JApplet {
 				getVistaSpline().repaint();
 			}
 		});
-		
+
 		// Añade un punto y recalcula de nuevo la SPLINE
 		getPanelControl().getBotones().getBoton(BotonEnum.ADD).addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String textoX = getPanelControl().getBotones().getCoordenadaXField().getText();
@@ -145,62 +143,62 @@ public class ControladorSpline extends JApplet {
 				getVistaSpline().requestFocusInWindow();
 				getVistaSpline().repaint();			}
 		});
-		
+
 		// Mose listener para los clicks del ratón
 		getVistaSpline().addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				getModeloSpline().addPunto(e.getX(), e.getY(), getVistaSpline().getWidth(), getVistaSpline().getHeight());
 				getVistaSpline().repaint();
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
-		
+
 		getVistaSpline().addMouseMotionListener(new MouseMotionListener() {
-			
+
 			@Override
 			public void mouseMoved(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				getModeloSpline().muevePunto(new Point2D.Double(e.getX(), e.getY()));
-				getModeloSpline().recalculaSpline();				
+				getModeloSpline().recalculaSpline();
 				getVistaSpline().setFocusable(true);
 				getVistaSpline().requestFocusInWindow();
-				getVistaSpline().repaint();			
+				getVistaSpline().repaint();
 			}
 		});
-		
+
 		// Listeners para las teclas
 		getVistaSpline().addKeyListener(new KeyAdapter() {
-			
+
 			@Override
 			public void keyPressed(KeyEvent e) {
 				switch (e.getKeyCode()) {
@@ -208,7 +206,7 @@ public class ControladorSpline extends JApplet {
 												break;
 					case KeyEvent.VK_D: 	getModeloSpline().seleccionNodo(1);
 												break;
-						
+
 		         case KeyEvent.VK_DOWN: if (!getModeloSpline().limiteInferior())
 		         							     getModeloSpline().mueveNodo(0, ModeloSpline.getDesplazamiento()); break;
 		         case KeyEvent.VK_UP: if (!getModeloSpline().limiteSuperior())
@@ -219,12 +217,12 @@ public class ControladorSpline extends JApplet {
 		         								   getModeloSpline().mueveNodo(ModeloSpline.getDesplazamiento(), 0); break;
 		         default: ;
 				}
-				repaint();	
+				repaint();
 			}
 		});
-		
-	} 
-	 
+
+	}
+
 	/**
 	 * Inicializa la vista
 	 */
@@ -239,9 +237,9 @@ public class ControladorSpline extends JApplet {
 	 */
 	private void initFrame() {
 		Toolkit miPanel = Toolkit.getDefaultToolkit();
-		Dimension tamanioPanel = miPanel.getScreenSize();	
+		Dimension tamanioPanel = miPanel.getScreenSize();
 		setSize (tamanioPanel.width, tamanioPanel.height);
-		setLayout(new BorderLayout());		
+		setLayout(new BorderLayout());
 	}
 
 	/**
@@ -285,5 +283,5 @@ public class ControladorSpline extends JApplet {
 	public void setModeloSpline(ModeloSpline modeloSpline) {
 		this.modeloSpline = modeloSpline;
 	}
-	
+
 }

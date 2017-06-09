@@ -1,5 +1,3 @@
-package spline;
-
 import javax.swing.JButton;
 
 
@@ -7,7 +5,7 @@ public class MiBoton extends JButton {
 
 	private static final long serialVersionUID = 1L;
 	private BotonEnum tipoBoton;	// Establece el tipo de boton
-	
+
 	/**
 	 * Constructor por defecto de mi boton
 	 * @param nombreBoton Define el nombre
@@ -31,6 +29,5 @@ public class MiBoton extends JButton {
 	public void setTipoBoton(BotonEnum tipoBoton) {
 		this.tipoBoton = tipoBoton;
 	}
-	
-}
 
+}

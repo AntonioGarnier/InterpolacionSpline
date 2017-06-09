@@ -1,5 +1,3 @@
-package spline;
-
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -11,13 +9,13 @@ public class Botonera extends ArrayList<MiBoton> {
 
 	private static final long serialVersionUID = 1L;
 	private static final int ALINEACION_TAG = 0;     // 0 = Centrado; 2 = Izquierda; 4 = Derecha
-	private static final int IMAGEN_SIZE = 20;		 // Tamaño de la imagen del icono de información 
+	private static final int IMAGEN_SIZE = 20;		 // Tamaño de la imagen del icono de información
 	private JTextField nNodosField = new JTextField();	// Campo de texto para el número de nodos
 	private JLabel nNodosTag = new JLabel ("Número de Nodos:");	// Etiqueta informativa para el número de nodos
 	private JLabel coordenadasTag = new JLabel ("Introduzca las coordenadas: ", getAlineacionTag());	// Etiqueta informativa para la introducción de un punto
 	private JTextField coordenadaXField = new JTextField();	// Campo de texto para la CoordenadaX
 	private JTextField coordenadaYField = new JTextField();  // Campo de texto para la CoordenadaY
-	
+
 	/**
 	 * Constructor de la botonera
 	 * @param indice Define el número identificativo
@@ -39,7 +37,7 @@ public class Botonera extends ArrayList<MiBoton> {
 				return boton;
 		return null;
 	}
-	
+
 	/**
 	 * Aquí se inicializan e instancian los botones de la botonera
 	 */
@@ -53,7 +51,7 @@ public class Botonera extends ArrayList<MiBoton> {
 	 * Inicializa el boton de información
 	 */
 	private void addIconoInformacion() {
-		ImageIcon icono = new ImageIcon ("./src/controles/info.png");
+		ImageIcon icono = new ImageIcon ("./info.png");
 		getBoton(BotonEnum.INFORMACION).setText(BotonEnum.INFORMACION.getTexto());
 		icono.setImage(icono.getImage().getScaledInstance(getImagenSize(), getImagenSize(), getImagenSize()));
 		getBoton(BotonEnum.INFORMACION).setIcon(icono);
@@ -143,5 +141,5 @@ public class Botonera extends ArrayList<MiBoton> {
 	public void setCoordenadaYField(JTextField coordenadaYField) {
 		this.coordenadaYField = coordenadaYField;
 	}
-	
+
 }

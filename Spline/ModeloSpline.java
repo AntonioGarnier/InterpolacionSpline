@@ -1,5 +1,3 @@
-package spline;
-
 import java.awt.Color;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
@@ -40,7 +38,7 @@ public class ModeloSpline {
 		setNodoClickado(-1);
 		setPuntoClickado(new Point2D.Double(- 2 * VistaSpline.getRadioPuntos(), - 2 * VistaSpline.getRadioPuntos()));
 	}
-	
+
 	/**
 	 * Mueve el Nodo en un incremento indicado por parámetros
 	 * @param moverX Define el incremento en X
@@ -54,7 +52,7 @@ public class ModeloSpline {
 		muevePunto(new Point2D.Double(getPuntoClickado().getX() + moverX, getPuntoClickado().getY() + moverY));
 		recalculaSpline();
 	}
-	
+
 	/**
 	 * Calcula los límites por el lado superior del panel
 	 * @return Devuelve True si alcanza el límite
@@ -67,7 +65,7 @@ public class ModeloSpline {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Calcula los límites por la izquierda del panel
 	 * @return Devuelve True si alcanza el límite
@@ -80,7 +78,7 @@ public class ModeloSpline {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Calcula los límites por el lado inferior del panel
 	 * @return Devuelve True si alcanza el límite
@@ -93,7 +91,7 @@ public class ModeloSpline {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Comprueba los límites por la derecha del panel
 	 * @return Devuelve True si alcanza el límite
@@ -106,7 +104,7 @@ public class ModeloSpline {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Selecciona un nodo de la SPLINE
 	 * @param direccion Define el incremento o decremento para la seleccion del nodo
@@ -120,14 +118,14 @@ public class ModeloSpline {
 			setNodoClickado(0);
 		setPuntoClickado(getPuntosSpline().get(getNodoClickado()));
 	}
-	
-	
+
+
 	/**
 	 * Recalcula la SPLINE cuando se produce algún cambio
 	 */
 	public void recalculaSpline () {
 		getPuntosX().clear();
-		getPuntosY().clear();		
+		getPuntosY().clear();
 		for (int i = 0; i < getNumeroNodos(); i++) {
 			getPuntosX().add(getPuntosSpline().get(i).getX());
 			getPuntosY().add(getPuntosSpline().get(i).getY());
@@ -135,11 +133,11 @@ public class ModeloSpline {
 		setPuntosKS(crearSplineCubica(getPuntosX(), getPuntosY()));
 		setPuntosSplineSuavizada(creaSpline());
 	}
-	
+
 	public void addColor () {
 		getPuntosSplineColor().add(ColorAleatorio.getColorAleatorioReal());
 	}
-	
+
 	/**
 	 * Genera un array con colores aleatorios para cada segmento
 	 * @return
@@ -150,7 +148,7 @@ public class ModeloSpline {
 			colores.add(ColorAleatorio.getColorAleatorioReal());
 		return colores;
 	}
-	
+
 	/**
 	 * Inicializa la SPLINE
 	 * @param numeroNodos Define el número de nodos que tiene la SPLINE
@@ -166,7 +164,7 @@ public class ModeloSpline {
 		setPuntosKS(crearSplineCubica(getPuntosX(), getPuntosY()));
 		setPuntosSplineSuavizada(creaSpline());
 	}
-	
+
 	/**
 	 * Crea la Spline evaluando las X y generando así los puntos (X, Y)
 	 * @return Devuelve el array con los puntos de la SPLINE
@@ -180,7 +178,7 @@ public class ModeloSpline {
 		}
 		return puntos;
 	}
-	
+
 	/**
 	 * Método que genera tantos puntos aleatorios como indicados en el atributo "numeroNodos"
 	 * @return Devuelve un array con los puntos generados aleatoriamente y ordenados
@@ -209,7 +207,7 @@ public class ModeloSpline {
 		}*/
 		return puntos;
 	}
-	
+
 	/**
 	 * Crea la Spline Cubica a partir de los valores de X e Y de los puntos iniciales
 	 * @param coordenadasX Define los valores de X
@@ -228,7 +226,7 @@ public class ModeloSpline {
 			d[i] = (coordenadasY.get(i + 1) - coordenadasY.get(i)) / h;
 		}
 
-		// Inicializa las tangentes a la media de las secantes 
+		// Inicializa las tangentes a la media de las secantes
 		// para tener un array de igual tamaño que los puntos X e Y
 		tangentes[0] = d[0];
 		for (int i = 1; i < n - 1; i++) {
@@ -246,22 +244,22 @@ public class ModeloSpline {
 	 */
 	public Double interpolate (Double x) {
 	    int i = 1;
-	    while(getPuntosX().get(i) < x) 
+	    while(getPuntosX().get(i) < x)
 	    	i++;
-			
+
 	    double t = (x - getPuntosX().get(i - 1)) / (getPuntosX().get(i) - getPuntosX().get(i - 1));
-			
+
 	    double a =  getPuntosKS()[i - 1] * (getPuntosX().get(i) - getPuntosX().get(i - 1)) - (getPuntosY().get(i) - getPuntosY().get(i - 1));
 	    double b = -getPuntosKS()[i] * (getPuntosX().get(i) - getPuntosX().get(i - 1)) + (getPuntosY().get(i) - getPuntosY().get(i - 1));
 
 	    double q = (1 - t) * getPuntosY().get(i - 1) + t * getPuntosY().get(i) + t * (1 - t) * (a * (1 - t) + b * t);
 	    return q;
 		}
-	
+
 	public void ordenaPuntos () {
 		Collections.sort(getPuntosSpline(), new Point2DCompare());
 	}
-	
+
 	public Point2D.Double buscaPunto (Point2D.Double punto) {
 		for (int i = 0; i < getPuntosSpline().size(); i++)
 			if (Math.abs(getPuntosSpline().get(i).getX() - punto.getX()) <= VistaSpline.getRadioPuntos() && Math.abs(getPuntosSpline().get(i).getY() - punto.getY()) <= VistaSpline.getRadioPuntos()) {
@@ -270,7 +268,7 @@ public class ModeloSpline {
 			}
 		return null;
 	}
-	
+
 	public void muevePunto (Point2D.Double posicionRaton) {
 		setPuntoClickado(buscaPunto(posicionRaton));
 		if (getPuntoClickado() != null) {
@@ -278,9 +276,9 @@ public class ModeloSpline {
 			ordenaPuntos();
 		}
 	}
-	
+
 	public class Point2DCompare implements Comparator<Point2D.Double> {
-		
+
 		public int compare(Point2D.Double punto1, Point2D.Double punto2) {
 	        if (punto1.x < punto2.x) {
 	            return -1;
@@ -293,14 +291,14 @@ public class ModeloSpline {
 	        }
 	    }
 	}
-	
+
 	public void addPunto (int coordenadaX, int coordenadaY, int ancho, int alto) {
 		addColor();
 		setAnchoPanel(ancho);
 		setAltoPanel(alto);
 		if (buscaPunto(new Point2D.Double(coordenadaX, coordenadaY)) == null) {
 			getPuntosSpline().add(new Point2D.Double(coordenadaX, coordenadaY));
-			setNumeroNodos(getNumeroNodos() + 1); 
+			setNumeroNodos(getNumeroNodos() + 1);
 			if (getPuntosSpline().size() > 1) {
 				setPuntoClickado(getPuntosSpline().get(getPuntosSpline().size() - 1));
 				setNodoClickado(getPuntosSpline().size() - 1);
@@ -313,11 +311,11 @@ public class ModeloSpline {
 			}
 		}
 	}
-	
+
 	public String mostrarPunto () {
 		return "(" + getPuntoClickado().getX() + ", " + getPuntoClickado().getY() + ")";
 	}
-	
+
 	/**
 	 * @return the anchoPanel
 	 */
@@ -408,7 +406,7 @@ public class ModeloSpline {
 	public void setPuntosKS(Double[] puntosKS) {
 		this.puntosKS = puntosKS;
 	}
-	
+
 	/**
 	 * @return the puntosSplineSuavizada
 	 */
@@ -450,7 +448,7 @@ public class ModeloSpline {
 	public void setPuntosY(ArrayList<Double> puntosY) {
 		this.puntosY = puntosY;
 	}
-	
+
 	/**
 	 * @return the puntoClickado
 	 */
@@ -486,7 +484,7 @@ public class ModeloSpline {
 		return DESPLAZAMIENTO;
 	}
 
-	
+
 	/**
 	 * @return the puntosSplineColor
 	 */

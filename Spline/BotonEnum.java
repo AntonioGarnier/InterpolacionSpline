@@ -1,14 +1,12 @@
-package spline;
-
 public enum BotonEnum {
 	// Botones de la botonera
 	GENERAR("Generar"),
 	REINICIAR("Reiniciar"),
 	INFORMACION("Informacion"),
 	ADD("Añadir");
-	
+
 	private String valor;
-	
+
 	/**
 	 * Constructor para el string de cada enumerado
 	 * @param valor Define el valor del enumerado
@@ -16,7 +14,7 @@ public enum BotonEnum {
 	private BotonEnum (String valor) {
 		this.valor = valor;
 	}
-	
+
 	/**
 	 * Getter
 	 * @return Devuelve el nombre del boton
@@ -24,6 +22,6 @@ public enum BotonEnum {
 	public String getTexto ()	{
 		return valor;
 	}
-	
-	
+
+
 }

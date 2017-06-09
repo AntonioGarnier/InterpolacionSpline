@@ -1,5 +1,3 @@
-package spline;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -25,7 +23,7 @@ public class VistaSpline extends JPanel {
 		setBackground(getColorFondo());
 		setModeloSpline(modeloSpline);
 	}
-	
+
 	/**
 	 * Inicializa la SPLINE
 	 * @param nNodos Define el numero de nodos
@@ -33,7 +31,7 @@ public class VistaSpline extends JPanel {
 	public void initSpline (int nNodos) {
 		getModeloSpline().initModeloSpline(nNodos, getWidth(), getHeight());
 	}
-	
+
 	/**
 	 * Método sobreescrito encargado de pintar la SPLINE
 	 */
@@ -45,7 +43,7 @@ public class VistaSpline extends JPanel {
 		getModeloSpline().getPuntosSpline().forEach(punto -> {
 			graficador.fillOval((int)punto.getX() - getRadioPuntos() / 2, (int)punto.getY() - getRadioPuntos() / 2, getRadioPuntos(), getRadioPuntos());
 		});
-		
+
 		graficador.setColor(getColorLinea());
 		if (getModeloSpline().getPuntosSplineColor().size() > 0)
 			graficador.setColor(getModeloSpline().getPuntosSplineColor().get(0));
@@ -57,7 +55,7 @@ public class VistaSpline extends JPanel {
 			}
 			graficador.draw(new Line2D.Double(getModeloSpline().getPuntosSplineSuavizada().get(i).getX(), getModeloSpline().getPuntosSplineSuavizada().get(i).getY(), getModeloSpline().getPuntosSplineSuavizada().get(i + 1).getX(), getModeloSpline().getPuntosSplineSuavizada().get(i + 1).getY()));
 		}
-		
+
 		graficador.setColor(getColorPuntoClickado());
 		graficador.drawString(getModeloSpline().mostrarPunto(), (int)getModeloSpline().getPuntoClickado().getX(), (int)(getModeloSpline().getPuntoClickado().getY() + getRadioPuntos()));
 		graficador.fillOval((int)getModeloSpline().getPuntoClickado().getX() - getRadioPuntos() / 2, (int)getModeloSpline().getPuntoClickado().getY() - getRadioPuntos() / 2, getRadioPuntos(), getRadioPuntos());
@@ -111,5 +109,5 @@ public class VistaSpline extends JPanel {
 	public static Color getColorPuntoClickado() {
 		return COLOR_PUNTO_CLICKADO;
 	}
-	
+
 }
