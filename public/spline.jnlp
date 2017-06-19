@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp
+  spec="6.0+"
+  codebase="https://antoniogarnier.github.io/InterpolacionSpline/public"
+  href="spline.jnlp">
+  <information>
+    <title>Interpolacion mediante Spline</title>
+    <vendor>Antonio Garnier</vendor>
+  </information>
+  <resources>
+      <!-- Application Resources -->
+      <j2se version="1.7+"
+            href="http://java.sun.com/products/autodl/j2se"/>
+      <jar href="spline.jar" main="true" />
+
+  </resources>
+  <application-desc
+       name="Interpolacion mediante Spline"
+       main-class="ControladorSpline">
+   </application-desc>
+   <update check="background"/>
+</jnlp>

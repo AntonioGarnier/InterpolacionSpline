@@ -1,23 +1,40 @@
 <html>
    <head>
-      <title> Interpolación mediante Splines </title>
+      <title> Interpolación mediante Spline </title>
       <meta charset="utf-8">
-		<meta name="author" content="Antonio Jesus Lopez Garnier">
-		<meta name="keywords" content="spline, interpolacion, interpolate, applet, java, code, mediante">
-
+		<meta name="author" content="Antonio Jesús López Garnier">
+		<meta name="keywords" content="spline, interpolacion, inteporalate, applet, java, code, github, aplicacion, java web start">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="view/css/style.css">
+      <script src="view/js/copyToClipBoard.js"></script>
    </head>
 
    <body>
-      <p> Interpolación mediante SPLINE - Applet </p>
-
-      <applet code="ControladorSpline"
-         width="600" height="600"
-         archive="spline4.jar"
-         codebase="https://antoniogarnier.github.io/InterpolacionSpline/"
-      >
-         *** SORRY! You need a java-enabled browser to run this applet.  Otherwise,
-         you'll only see this text. ***
+      <h1 id="titulo" class="text-center"> Interpolación mediante Spline </h1>
+      <div class="btn-group btn-group-justified">
+        <a href="https://github.com/AntonioGarnier/Applets" class="btn btn-info btn-lg">Guía para visualizar la Applet</a>
+        <a href="https://github.com/AntonioGarnier/InterpolacionSpline" class="btn btn-info btn-lg">Repositorio con el código</a>
+      </div>
+      <br><br>
+      <h3>Una vez completados los pasos de la <a href="https://github.com/AntonioGarnier/Applets">guía</a>:</h3>
+      <h4>
+         <ul>
+            <li>Si usas safari podrás ver la applet en esta misma página</li><br>
+            <li>Para otros navegadores</li><br>
+               <ol>
+                 <li>Abre una consola/terminal/cmd</li><br>
+                 <li>Utiliza el comando $javaws</li><br>
+                 <li>Seguido del enlace al fichero .jnlp: <p id="comando_javaws">javaws https://antoniogarnier.github.io/InterpolacionSpline/public/spline.jnlp</p></li><br>
+                 <li><button id="botonCopia" class="btn btn-primary" onclick="copyToClipBoard('comando_javaws')">Copiar comando</button></li>
+               </ol>
+         </ul>
+      </h4>
+      <applet class="col-md-10 col-md-offset-1" code="ControladorSpline"
+         width="1152" height="768"
+         archive="spline.jar"
+         codebase="https://antoniogarnier.github.io/InterpolacionSpline/public">
+         <h3 class="text-center">*** SIGUE EL ENLACE A LA GUÍA PARA PODER VISUALIZAR LA APPLET ***</h3>
       </applet>
-
+      <br><br>
    </body>
 </html>

@@ -1,0 +1,13 @@
+function copyToClipBoard(id_elemento) {
+  var aux = document.createElement("input");
+  aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+  document.body.appendChild(aux);
+  aux.select();
+  document.execCommand("copy");
+  document.body.removeChild(aux);
+  document.getElementById("botonCopia").innerHTML = "Copiado!";
+  document.getElementById('botonCopia').className = "btn btn-success";
+
+}
+//document.getElementById(id_elemento).innerHTML
+//"javaws https://antoniogarnier.github.io/TiroParabolico/public/tiro.jnlp"
